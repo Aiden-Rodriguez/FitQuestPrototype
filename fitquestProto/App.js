@@ -62,7 +62,7 @@ export default function App() {
               iconName = focused ? 'person' : 'person-outline';
             }
             else if (route.name === 'Friends') {
-              iconName = focused ? 'people' : 'people-outline';
+              iconName = focused ? 'people-sharp' : 'people-outline';
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
