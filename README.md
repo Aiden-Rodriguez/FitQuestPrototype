@@ -4,8 +4,10 @@ Clone Repo
 
 Go into folder, npm install
 
-Run npx expo start
+Run npm start
 
-On your phone download Expo Go
+Go to inspect element
 
-Scan the QR code generated on your terminal, and now the app is running on your phone.
+Click the icon in the top left, next to elements that looks like a small rectangle and a bigger square
+
+Change the dimensions to a phone, I will be using iPhone 14 Pro Max
