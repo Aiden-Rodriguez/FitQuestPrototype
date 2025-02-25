@@ -32,6 +32,15 @@ function ProfileScreen() {
   );
 }
 
+function FriendsScreen() {
+  return (
+    <View style={styles.container}>
+      <Text>Find Your Friends!</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
 // Create the Tab Navigator
 const Tab = createBottomTabNavigator();
 
@@ -45,10 +54,15 @@ export default function App() {
 
             if (route.name === 'Home') {
               iconName = focused ? 'home' : 'home-outline';
-            } else if (route.name === 'Workouts') {
+            } 
+            else if (route.name === 'Workouts') {
               iconName = focused ? 'barbell' : 'barbell-outline';
-            } else if (route.name === 'Profile') {
+            } 
+            else if (route.name === 'Profile') {
               iconName = focused ? 'person' : 'person-outline';
+            }
+            else if (route.name === 'Friends') {
+              iconName = focused ? 'friends' : 'people-outline';
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -60,6 +74,7 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Workouts" component={WorkoutsScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen name="Friends" component={FriendsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
