@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import { IoHome, IoHomeOutline, IoBarbell, IoBarbellOutline, IoPerson, IoPersonOutline, IoPeople, IoPeopleOutline } from 'react-icons/io5';
 import './App.css';
 import ProfileScreen from './ProfilePage';
+import FriendsScreen from './FriendsPage';
 
 // Individual screen components
 function HomeScreen() {
@@ -17,14 +18,6 @@ function WorkoutsScreen() {
   return (
     <div className="container">
       <h1>Your Workouts</h1>
-    </div>
-  );
-}
-
-function FriendsScreen() {
-  return (
-    <div className="container">
-      <h1>Find Your Friends!</h1>
     </div>
   );
 }
