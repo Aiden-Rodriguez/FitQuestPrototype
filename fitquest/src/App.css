@@ -13,6 +13,28 @@
   text-align: center;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.stats-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.stats-button:hover {
+  background-color: #005BBB;
+}
+
+
 .tab-bar {
   display: flex;
   justify-content: space-around;
