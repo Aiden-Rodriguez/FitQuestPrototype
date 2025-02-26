@@ -4,6 +4,7 @@ import { IoHome, IoHomeOutline, IoBarbell, IoBarbellOutline, IoPerson, IoPersonO
 import './App.css';
 import ProfileScreen from './ProfilePage';
 import FriendsScreen from './FriendsPage';
+import StatsHistoryScreen from './StatsHistoryScreen';
 
 // Individual screen components
 function HomeScreen() {
@@ -28,13 +29,7 @@ function WorkoutsScreen() {
   );
 }
 
-function StatsHistoryScreen() {
-  return (
-    <div className="container">
-      <h1>Stats & History</h1>
-    </div>
-  );
-}
+// function StatsHistoryScreen() { ... } has been removed because it is already declared
 
 // Main App component with bottom navigation
 function App() {
