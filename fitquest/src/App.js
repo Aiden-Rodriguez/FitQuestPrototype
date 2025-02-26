@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import { IoHome, IoHomeOutline, IoBarbell, IoBarbellOutline, IoPerson, IoPersonOutline, IoPeople, IoPeopleOutline } from 'react-icons/io5'; // Icons for web
-import './App.css'; // For custom styles
+import { IoHome, IoHomeOutline, IoBarbell, IoBarbellOutline, IoPerson, IoPersonOutline, IoPeople, IoPeopleOutline } from 'react-icons/io5';
+import './App.css';
+import ProfileScreen from './ProfilePage';
 
 // Individual screen components
 function HomeScreen() {
@@ -16,14 +17,6 @@ function WorkoutsScreen() {
   return (
     <div className="container">
       <h1>Your Workouts</h1>
-    </div>
-  );
-}
-
-function ProfileScreen() {
-  return (
-    <div className="container">
-      <h1>Your Profile</h1>
     </div>
   );
 }

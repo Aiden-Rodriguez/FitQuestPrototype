@@ -1,0 +1,86 @@
+/* Center the profile container in the middle of the screen */
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+  }
+  
+  /* Profile container styling */
+  .profile-container {
+    max-width: 600px;
+    padding: 50px;
+    border-radius: 15px;
+    background: #f8f9fa;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* Title */
+  h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #222;
+  }
+  
+  /* Profile information */
+  .profile-info {
+    text-align: left;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  /* Profile details with spacing */
+  .profile-info p {
+    margin: 0;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Labels */
+  strong {
+    font-size: 24px;
+    color: #444;
+  }
+  
+  /* Username styling */
+  .bubble-text {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 24px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 30px;
+    font-weight: bold;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (min-width: 768px) {
+    .profile-container {
+      max-width: 700px;
+      padding: 60px;
+    }
+  
+    h1 {
+      font-size: 40px;
+    }
+  
+    .profile-info {
+      font-size: 24px;
+      gap: 40px;
+    }
+  
+    strong {
+      font-size: 26px;
+    }
+  
+    .bubble-text {
+      font-size: 26px;
+    }
+  }
+  
