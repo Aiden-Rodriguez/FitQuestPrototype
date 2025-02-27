@@ -109,14 +109,14 @@ export default function FriendsScreen() {
         <div className="overlay">
           <div className="overlay-content">
             <h2>Add a Friend</h2>
-            <input
+            <input 
               type="text"
               className="search-bar"
               placeholder="Search for a friend..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <ul className="search-results">
+            <ul className="search-results" style={{ marginRight: '40px' }}>
               {filteredUsers.length > 0 ? (
                 filteredUsers.map(user => (
                   <li key={user.id} className="friend-item">
