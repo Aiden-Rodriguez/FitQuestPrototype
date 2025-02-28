@@ -50,7 +50,7 @@ export default function FriendsScreen() {
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
   return (
-    <div className="friends-container" style={{backgroundColor:"#f5e2c9"}}>
+    <div className="friends-container">
       <div className="top-bar">
         <div className="top-left">
           <img src={user.avatar} alt="Profile" className="profile-pic" />
@@ -85,7 +85,7 @@ export default function FriendsScreen() {
 
       <ul className="friends-list">
         {friends.map(friend => (
-          <li key={friend.id} className="friend-item" onClick={() => handleFriendClick(friend)} style={{backgroundColor:"#5b83e5"}}>
+          <li key={friend.id} className="friend-item" onClick={() => handleFriendClick(friend)}>
             <img src={friend.avatar} alt={friend.name} className="friend-avatar" />
             <span className="friend-name">{friend.name}</span>
           </li>

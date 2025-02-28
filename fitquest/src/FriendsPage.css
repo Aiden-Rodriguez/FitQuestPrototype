@@ -2,12 +2,12 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #fbfff1;
     font-family: Arial, sans-serif;
   }
   
 .top-bar {
-    background-color: #6ba4e0;
+    background-color: #090c9b;
     color: white;
     display: flex;
     align-items: center;
@@ -38,7 +38,7 @@
     border-radius: 50%;
     border: 2px solid white;
     margin-left: 10px;
-    border: 2px solid #007bff;
+    border: 2px solid #3d52d5;
   }
   
 
@@ -86,7 +86,7 @@
   .friend-item {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: #b4c5e4;
     padding: 12px;
     margin: 8px 0;
     border-radius: 8px;
@@ -137,7 +137,7 @@
     height: 80px;
     border-radius: 50%;
     margin-bottom: 10px;
-    border: 2px solid #007bff;
+    border: 2px solid #3d52d5;
   }
   
   .regular-button {
@@ -158,7 +158,7 @@
 }
 
 .add-friends-bar {
-  background-color: #557db4;
+  background-color: #3d52d5;
   color: white;
   display: flex;
   align-items: center;
