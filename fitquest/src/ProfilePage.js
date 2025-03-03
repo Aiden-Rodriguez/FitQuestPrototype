@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProfilePage.css'; 
 import bubble from './assets/bubble.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function ProfileScreen() {
   const userProfile = {
@@ -15,6 +16,7 @@ function ProfileScreen() {
     avatar: bubble
   };
 
+const navigate = useNavigate();
   return (
     <div className="profile-page">
       {/* Profile Visual Elements */}
@@ -24,6 +26,9 @@ function ProfileScreen() {
         <div className="profile-content">
           <img src={userProfile.avatar} alt="Profile" className="profile-picture" />
         </div>
+      </div>
+      <div className='custom-button' onClick={() => navigate('/stats-history')}>
+          View Stats and History
       </div>
 
       <div className="profile-container">
