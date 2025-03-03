@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink, useNavigate } from 'react-router-dom';
 import { IoHome, IoHomeOutline, IoBarbell, IoBarbellOutline, IoPerson, IoPersonOutline, IoPeople, IoPeopleOutline } from 'react-icons/io5';
 import './App.css';
@@ -8,17 +8,44 @@ import StatsHistoryScreen from './StatsHistoryScreen';
 import WorkoutsScreen from './workouts';
 import "./HomeScreen.css";
 import bellIcon from "./assets/bellicon.png";
+
 // Individual screen components
 function HomeScreen() {
   const navigate = useNavigate();
+
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+
+  const toggleOverlay = () => {
+    setIsOverlayOpen(!isOverlayOpen);
+  };
+
+  const closeOverlay = (event) => {
+    if (event.target.classList.contains("overlay")) {
+      setIsOverlayOpen(false);
+    }
+  };
 
   return (
     <div className="home-container">
       {/* Header Section */}
       <div className="header">
         <h1 className="title">FitQuest</h1>
-        <img src={bellIcon} alt="Profile" className="bell-icon" />
+        <img 
+          src={bellIcon} 
+          alt="Notifications" 
+          className="bell-icon" 
+          onClick={toggleOverlay} 
+        />
       </div>
+
+      {/* Notification Overlay */}
+      {isOverlayOpen && (
+        <div className="overlay" onClick={closeOverlay}>
+          <div className="overlay-content">
+            <p>No notifications</p>
+          </div>
+        </div>
+      )}
 
       {/* Level Display */}
       <div className="level-display">

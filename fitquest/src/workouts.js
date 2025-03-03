@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './workoutsScreen.css';
 import bubble from './assets/bubble.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function WorkoutsScreen() {
   const [workouts, setWorkouts] = useState([]);
@@ -107,11 +108,12 @@ const handleSubmit = (e) => {
     setWorkouts((prev) => prev.filter((workout) => workout.id !== id));
   };
 
+    const navigate = useNavigate();
   return (
     <div className="workouts-container">
       <div className="top-bar">
         <div className="top-left">
-          <img src={user.avatar} alt="Profile" className="profile-pic" />
+          <img src={user.avatar} alt="Profile" className="profile-pic" onClick={() => navigate('/profile')}/>
         </div>
         <div className="top-middle">
           <span className="user-name">{user.username}</span>

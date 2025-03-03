@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './StatsHistory.css';
 import './workoutsScreen.css';
 import bubble from './assets/bubble.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function StatsHistoryScreen() {
   const [activeTab, setActiveTab] = useState('stats');
@@ -13,17 +14,19 @@ function StatsHistoryScreen() {
     setWorkouts(savedWorkouts);
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <div className="stats-history-wrapper">
       <div className="profile-header">
-        <img src={bubble} alt="Profile" className="profile-pic" />
+        <img src={bubble} alt="Profile" className="profile-pic" onClick={() => navigate('/profile')}/>
         <div className="profile-info">
           <h2>Bubble</h2>
           <p>Rank: Gold III</p>
           <p>Lvl 17 (10/15 exp)</p>
           <div className="progress-bar"><div className="progress" style={{ width: '50%' }}></div></div>
         </div>
-        <button className="edit-button">Edit</button>
+        <button className="edit-button" onClick={() => navigate('/profile')}>Edit</button>
       </div>
 
       <div className="tab-nav">

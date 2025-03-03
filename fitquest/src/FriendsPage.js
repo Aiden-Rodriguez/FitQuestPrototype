@@ -5,6 +5,7 @@ import horse from './assets/horse.png';
 import monkey from './assets/monkey.png';
 import bubble from './assets/bubble.jpg';
 import users from './users';
+import { useNavigate } from 'react-router-dom';
 
 const user = {
   username: 'Bubble',
@@ -21,6 +22,7 @@ const initialFriends = [
 ];
 
 export default function FriendsScreen() {
+  const navigate = useNavigate();
   const [selectedFriend, setSelectedFriend] = useState(null);
   const [isOpenAddFriend, setIsOpenAddFriend] = useState(false);
   const [isOpenViewRequests, setIsOpenViewRequests] = useState(false);
@@ -71,7 +73,7 @@ export default function FriendsScreen() {
     <div className="friends-container">
       <div className="top-bar">
         <div className="top-left">
-          <img src={user.avatar} alt="Profile" className="profile-pic" />
+          <img src={user.avatar} alt="Profile" className="profile-pic" onClick={() => navigate('/profile')}/>
         </div>
         <div className="top-middle">
           <span className="user-name">{user.username}</span>
