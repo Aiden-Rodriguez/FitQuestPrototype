@@ -20,7 +20,7 @@ function StatsHistoryScreen() {
         <div className="profile-info">
           <h2>Bubble</h2>
           <p>Rank: Gold III</p>
-          <p>Lvl 17</p>
+          <p>Lvl 17 (10/15 exp)</p>
           <div className="progress-bar"><div className="progress" style={{ width: '50%' }}></div></div>
         </div>
         <button className="edit-button">Edit</button>
