@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './StatsHistory.css';
+import './workoutsScreen.css';
+import bubble from './assets/bubble.jpg';
 
 function StatsHistoryScreen() {
   const [activeTab, setActiveTab] = useState('stats');
@@ -14,11 +16,11 @@ function StatsHistoryScreen() {
   return (
     <div className="stats-history-wrapper">
       <div className="profile-header">
-        <img src="https://via.placeholder.com/50" alt="Profile" className="profile-pic" />
+        <img src={bubble} alt="Profile" className="profile-pic" />
         <div className="profile-info">
-          <h2>Juan Zavala</h2>
-          <p>Rank: Noob</p>
-          <p>Lvl 5</p>
+          <h2>Bubble</h2>
+          <p>Rank: Gold III</p>
+          <p>Lvl 17</p>
           <div className="progress-bar"><div className="progress" style={{ width: '50%' }}></div></div>
         </div>
         <button className="edit-button">Edit</button>
