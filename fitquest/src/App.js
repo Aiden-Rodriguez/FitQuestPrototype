@@ -6,16 +6,34 @@ import ProfileScreen from './ProfilePage';
 import FriendsScreen from './FriendsPage';
 import StatsHistoryScreen from './StatsHistoryScreen';
 import WorkoutsScreen from './workouts';
+import "./HomeScreen.css";
+import bellIcon from "./assets/bellicon.png";
 // Individual screen components
 function HomeScreen() {
   const navigate = useNavigate();
+
   return (
-    <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-      <h1>Welcome to FitQuest</h1>
-      <div className="button-container" style={{ marginTop: '20px' }}>
-        <button className="stats-button" onClick={() => navigate('/stats-history')}>
-          View Stats & History
-        </button>
+    <div className="home-container">
+      {/* Header Section */}
+      <div className="header">
+        <h1 className="title">FitQuest</h1>
+        <img src={bellIcon} alt="Profile" className="bell-icon" />
+      </div>
+
+      {/* Level Display */}
+      <div className="level-display">
+        <span className="rank-text">Bubble Rank</span>
+        <div className="level-circle">
+          <span className="level-text">LEVEL</span>
+          <span className="level-number">17</span>
+          <span className="xp-progress">11/15</span>
+        </div>
+      </div>
+
+      {/* Ongoing Quest Section */}
+      <div className="quest-section">
+        <h3>Ongoing Quests:</h3>
+        <div className="quest-box">15 Crunches</div> {/* Added default quest */}
       </div>
     </div>
   );
