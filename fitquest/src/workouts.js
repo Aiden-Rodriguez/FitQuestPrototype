@@ -9,7 +9,9 @@ function WorkoutsScreen() {
     id: null,
     name: '',
     split: '',
-    details: ''
+    details: '',
+    difficulty: '',
+    customSplit: ''
   });
 
   const user = {
@@ -22,7 +24,14 @@ function WorkoutsScreen() {
 
   // Open modal for a new workout
   const openNewWorkoutModal = () => {
-    setCurrentWorkout({ id: null, name: '', split: '', details: '' });
+    setCurrentWorkout({ 
+      id: null, 
+      name: '', 
+      split: '', 
+      details: '', 
+      difficulty: '', 
+      customSplit: '' 
+    });
     setShowModal(true);
   };
 
@@ -112,6 +121,10 @@ function WorkoutsScreen() {
             </button>
             <h2>{workout.name || "Unnamed Workout"}</h2>
             <p className="workout-split">Split: {workout.split}</p>
+            {workout.split === "Custom" && workout.customSplit && (
+              <p className="workout-custom-split">Custom: {workout.customSplit}</p>
+            )}
+            <p className="workout-difficulty">Difficulty: {workout.difficulty}</p>
             <p>{workout.details}</p>
           </div>
         ))}
@@ -148,6 +161,33 @@ function WorkoutsScreen() {
                   <option value="Upper/Lower">Upper/Lower</option>
                   <option value="Full Body">Full Body</option>
                   <option value="Custom">Custom</option>
+                </select>
+              </label>
+              {currentWorkout.split === 'Custom' && (
+                <label>
+                  Custom Split:
+                  <input
+                    type="text"
+                    name="customSplit"
+                    value={currentWorkout.customSplit}
+                    onChange={handleInputChange}
+                    placeholder="Enter custom split details"
+                    required
+                  />
+                </label>
+              )}
+              <label>
+                Difficulty:
+                <select
+                  name="difficulty"
+                  value={currentWorkout.difficulty}
+                  onChange={handleInputChange}
+                  required
+                >
+                  <option value="">Select a difficulty</option>
+                  <option value="Easy">Easy</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Hard">Hard</option>
                 </select>
               </label>
               <label>
