@@ -100,6 +100,23 @@
     background-color: #c0392b;
   }
   
+  .complete-workout-button {
+    background-color: #3434b7;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-button:hover {
+    background-color: #1a1a78;
+  }
+
   /* Existing styles remain below... */
   
   /* Global container */
