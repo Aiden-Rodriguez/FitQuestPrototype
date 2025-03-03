@@ -5,7 +5,7 @@ import './App.css';
 import ProfileScreen from './ProfilePage';
 import FriendsScreen from './FriendsPage';
 import StatsHistoryScreen from './StatsHistoryScreen';
-
+import WorkoutsScreen from './workouts';
 // Individual screen components
 function HomeScreen() {
   const navigate = useNavigate();
@@ -21,13 +21,6 @@ function HomeScreen() {
   );
 }
 
-function WorkoutsScreen() {
-  return (
-    <div className="container">
-      <h1>Your Workouts</h1>
-    </div>
-  );
-}
 
 // function StatsHistoryScreen() { ... } has been removed because it is already declared
 
