@@ -10,29 +10,29 @@ function ProfileScreen() {
     weight: "60kg",
     goals: "Build muscle, improve endurance, and stay healthy.",
     rank: "Gold III",
-    level: "lvl17",
+    level: "17",
     experience: "10/15",
     avatar: bubble
   };
 
   return (
     <div className="profile-page">
-      {/* Profile Visual Elements (Outside of user profile section) */}
+      {/* Profile Visual Elements */}
       <div className="profile-visual">
         <h1 className="profile-username">{userProfile.username}</h1>
 
         <div className="profile-content">
-          <span className="profile-rank">{userProfile.rank}</span>
           <img src={userProfile.avatar} alt="Profile" className="profile-picture" />
-          <span className="profile-level">{userProfile.level}</span>
-          <span className="profile-experience">{userProfile.experience} XP</span>
         </div>
       </div>
 
-      {/* Background Information (Inside the user profile section) */}
+      {/* Background Information (Now Includes Rank, Level, and XP) */}
       <div className="profile-container">
         <h2>About You</h2>
         <div className="profile-info">
+          <p><strong>Level:</strong> {userProfile.level}</p>
+          <p><strong>Rank:</strong> <span className="rank">{userProfile.rank}</span></p>
+          <p><strong>Experience:</strong> <span className="experience">{userProfile.experience} XP</span></p>
           <p><strong>Bio:</strong> {userProfile.bio}</p>
           <p><strong>Sex:</strong> {userProfile.sex}</p>
           <p><strong>Weight:</strong> {userProfile.weight}</p>
@@ -44,3 +44,4 @@ function ProfileScreen() {
 }
 
 export default ProfileScreen;
+ 

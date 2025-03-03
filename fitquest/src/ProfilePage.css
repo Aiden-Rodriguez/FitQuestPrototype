@@ -1,79 +1,80 @@
 .profile-page {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers everything vertically */
-  align-items: center; /* Centers everything horizontally */
-  height: 100vh; /* Full screen height */
-  background-color: #f0f0f0;
-  padding: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  height: auto;
+  background: linear-gradient(to bottom, #e6f0ff, #f7fbff); /* ✅ Light blue gradient */
+  padding-bottom: 15vh;
+  overflow-y: auto;
+  padding-top: 3vh; /* ✅ Reduced padding to move content up */
 }
 
 /* Move Visual Elements Higher */
 .profile-visual {
   text-align: center;
-  margin-bottom: 80px; /* Adds more space between visual elements & bio */
-  margin-top: -100px; /* Moves everything higher */
+  margin-bottom: 3vh; /* ✅ Moved closer to the About You section */
+  margin-top: 2vh;
 }
 
+/* Make Username Bigger */
 .profile-username {
-  font-size: 42px; /* Large username */
+  font-size: 6vw; /* ✅ Slightly increased */
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 1vh;
 }
 
-.profile-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  gap: 50px; /* More spacing */
-}
-
-.profile-picture {
-  width: 180px; /* Keep profile pic size */
-  height: 180px;
-  border-radius: 50%;
-  border: 5px solid #333;
-}
-
-.profile-rank {
-  position: absolute;
-  left: -90px; /* Keep distance */
-  top: -20px; /* Move rank even higher */
-  font-size: 22px;
-  font-weight: bold;
-  color: #c5a12e;
-}
-
-.profile-level {
-  position: absolute;
-  bottom: -65px; /* Move level slightly higher */
-  font-size: 22px;
-  font-weight: bold;
-  color: #008080;
-}
-
-.profile-experience {
-  position: absolute;
-  right: -90px; /* Keep distance */
-  top: -20px; /* Move XP even higher */
-  font-size: 22px;
-  font-weight: bold;
-  color: #ff6347;
-}
-
-/* Background Info Section */
+/* Profile Container */
 .profile-container {
   background: white;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  padding: 5vh;
+  border-radius: 1.2vw;
+  box-shadow: 0 0.8vh 1.6vh rgba(0, 0, 0, 0.3);
   text-align: center;
-  width: 600px; /* Keep size */
+  width: 65vw; /* ✅ Slightly wider */
+  max-width: 650px;
+  height: auto;
+  margin-top: 3vh; /* ✅ Reduced to bring it closer to the profile picture */
+  margin-bottom: 15vh;
 }
 
+/* Bigger Profile Picture */
+.profile-picture {
+  width: 22vw;
+  height: 22vw;
+  max-width: 220px; /* ✅ Slightly larger */
+  max-height: 220px;
+  border-radius: 50%;
+  border: 0.6vw solid #007bff;
+}
+
+/* Make Text Bigger in Profile Info */
 .profile-info {
-  font-size: 22px;
-  margin-top: 15px;
+  font-size: 3.5vw; /* ✅ Increased */
+  margin-top: 2vh;
   text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Bold Titles and Larger Spacing */
+.profile-info p {
+  margin-bottom: 2vh; /* ✅ Increased spacing */
+  font-size: 2.8vw; /* ✅ Larger text */
+}
+
+.profile-info strong {
+  font-size: 3.5vw; /* ✅ Make bold labels even bigger */
+}
+
+/* 🔥 Colored Elements */
+.profile-info .rank {
+  color: gold; /* ✅ Gold Rank */
+  font-weight: bold;
+}
+
+.profile-info .experience {
+  color: #3498db; /* ✅ Blue XP */
+  font-weight: bold;
 }
