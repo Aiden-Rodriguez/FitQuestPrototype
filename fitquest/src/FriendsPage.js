@@ -70,7 +70,7 @@ export default function FriendsScreen() {
   };
 
   return (
-    <div className="friends-container">
+    <div className="friends-container" >
       <div className="top-bar">
         <div className="top-left">
           <img src={user.avatar} alt="Profile" className="profile-pic" onClick={() => navigate('/profile')}/>
@@ -85,7 +85,7 @@ export default function FriendsScreen() {
         </div>
       </div>
 
-      <div className="add-friends-bar">
+      <div className="add-friends-bar" >
         <div className="top-left" style={{ marginLeft: '20px' }}>
           <button className="regular-button" style={{width:"100px"}} onClick={() => toggleOpenAddFriend()}>
             Add New

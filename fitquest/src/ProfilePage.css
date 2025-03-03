@@ -5,76 +5,69 @@
   justify-content: flex-start;
   min-height: 100vh;
   height: auto;
-  background: linear-gradient(to bottom, #e6f0ff, #f7fbff); /* ✅ Light blue gradient */
+  background: linear-gradient(to bottom, #e6f0ff, #f7fbff);
   padding-bottom: 15vh;
   overflow-y: auto;
-  padding-top: 3vh; /* ✅ Reduced padding to move content up */
+  padding-top: 3vh;
 }
 
-/* Move Visual Elements Higher */
 .profile-visual {
   text-align: center;
-  margin-bottom: 3vh; /* ✅ Moved closer to the About You section */
+  margin-bottom: 3vh; 
   margin-top: 2vh;
 }
 
-/* Make Username Bigger */
 .profile-username {
-  font-size: 6vw; /* ✅ Slightly increased */
+  font-size: 6vw; 
   font-weight: bold;
   margin-bottom: 1vh;
 }
 
-/* Profile Container */
 .profile-container {
   background: white;
   padding: 5vh;
   border-radius: 1.2vw;
   box-shadow: 0 0.8vh 1.6vh rgba(0, 0, 0, 0.3);
   text-align: center;
-  width: 65vw; /* ✅ Slightly wider */
+  width: 65vw;
   max-width: 650px;
   height: auto;
-  margin-top: 3vh; /* ✅ Reduced to bring it closer to the profile picture */
+  margin-top: 3vh; 
   margin-bottom: 15vh;
 }
 
-/* Bigger Profile Picture */
 .profile-picture {
   width: 22vw;
   height: 22vw;
-  max-width: 220px; /* ✅ Slightly larger */
+  max-width: 220px; 
   max-height: 220px;
   border-radius: 50%;
   border: 0.6vw solid #007bff;
 }
 
-/* Make Text Bigger in Profile Info */
 .profile-info {
-  font-size: 3.5vw; /* ✅ Increased */
+  font-size: 3.5vw;
   margin-top: 2vh;
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
-/* Bold Titles and Larger Spacing */
 .profile-info p {
-  margin-bottom: 2vh; /* ✅ Increased spacing */
-  font-size: 2.8vw; /* ✅ Larger text */
+  margin-bottom: 2vh; 
+  font-size: 2.8vw; 
 }
 
 .profile-info strong {
-  font-size: 3.5vw; /* ✅ Make bold labels even bigger */
+  font-size: 3.5vw;
 }
 
-/* 🔥 Colored Elements */
 .profile-info .rank {
-  color: gold; /* ✅ Gold Rank */
+  color: gold; 
   font-weight: bold;
 }
 
 .profile-info .experience {
-  color: #3498db; /* ✅ Blue XP */
+  color: #3498db;
   font-weight: bold;
 }
