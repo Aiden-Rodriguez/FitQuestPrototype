@@ -64,7 +64,7 @@
 
 .tab-button.active {
     background: #007bff; /* Darker Blue */
-    transition: background 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
 .stats-section, .history-section {

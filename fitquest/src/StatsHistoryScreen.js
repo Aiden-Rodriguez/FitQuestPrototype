@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './StatsHistory.css';
+import profilePicture from'./assets/bubble.jpg';
 
 function StatsHistoryScreen() {
   const [activeTab, setActiveTab] = useState('stats');
@@ -14,12 +15,12 @@ function StatsHistoryScreen() {
   return (
     <div className="stats-history-wrapper">
       <div className="profile-header">
-        <img src="https://via.placeholder.com/50" alt="Profile" className="profile-pic" />
+        <img src={profilePicture} alt="Profile" className="profile-pic" />
         <div className="profile-info">
           <h2>Juan Zavala</h2>
-          <p>Rank: Noob</p>
-          <p>Lvl 5</p>
-          <div className="progress-bar"><div className="progress" style={{ width: '50%' }}></div></div>
+          <p>Rank: Gold III</p>
+          <p>Lvl 17</p>
+          <div className="progress-bar"><div className="progress" style={{ width: '66%' }}></div></div>
         </div>
         <button className="edit-button">Edit</button>
       </div>
@@ -48,11 +49,14 @@ function StatsHistoryScreen() {
           {workouts.length === 0 ? (
             <p>No workouts added yet.</p>
           ) : (
-            <ul>
-              {workouts.map((workout, index) => (
-                <li key={index}><strong>{workout.name}:</strong> {workout.sets} sets of {workout.reps} reps {workout.weight && `at ${workout.weight} lbs`}</li>
-              ))}
-            </ul>
+            <p> 
+              <p>
+              20 Crunches 02/28/25
+              </p>
+              <p>
+              30 Pull-Ups 03/01/25
+              </p>
+            </p>
           )}
         </div>
       )}
