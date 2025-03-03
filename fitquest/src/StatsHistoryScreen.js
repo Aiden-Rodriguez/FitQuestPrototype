@@ -50,11 +50,14 @@ function StatsHistoryScreen() {
           {workouts.length === 0 ? (
             <p>No workouts added yet.</p>
           ) : (
-            <ul>
-              {workouts.map((workout, index) => (
-                <li key={index}><strong>{workout.name}:</strong> {workout.sets} sets of {workout.reps} reps {workout.weight && `at ${workout.weight} lbs`}</li>
-              ))}
-            </ul>
+            <p> 
+              <p>
+              20 Crunches 02/28/25
+              </p>
+              <p>
+              30 Pull-Ups 03/01/25
+              </p>
+            </p>
           )}
         </div>
       )}

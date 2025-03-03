@@ -22,18 +22,19 @@ function HomeScreen() {
 
       {/* Level Display */}
       <div className="level-display">
-        <span className="rank-text">Bubble Rank</span>
-        <div className="level-circle">
+        <span className="rank-text">Gold Rank</span>
+        <button className="level-circle" onClick={() => navigate('/stats-history')}>
           <span className="level-text">LEVEL</span>
           <span className="level-number">17</span>
-          <span className="xp-progress">11/15</span>
-        </div>
+          <span className="xp-progress">10/15</span>
+        </button>
       </div>
 
       {/* Ongoing Quest Section */}
       <div className="quest-section">
         <h3>Ongoing Quests:</h3>
-        <div className="quest-box">15 Crunches</div> {/* Added default quest */}
+        <div className="quest-box">15 Crunches</div>
+        <div className="quest-box">29 Pull-Ups</div>
       </div>
     </div>
   );
