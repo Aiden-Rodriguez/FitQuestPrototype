@@ -63,7 +63,7 @@
 }
 
 .tab-button.active {
-    background: #007bff; /* Darker Blue */
+    background: #007bff; 
     transition: 0.3s ease-in-out;
 }
 

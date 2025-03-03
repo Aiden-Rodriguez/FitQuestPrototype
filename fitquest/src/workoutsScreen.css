@@ -116,8 +116,6 @@
   .delete-button:hover {
     background-color: #1a1a78;
   }
-
-  /* Existing styles remain below... */
   
   /* Global container */
   .workouts-container {
@@ -140,7 +138,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    margin-bottom: 100px; /* Space for the floating button */
+    margin-bottom: 100px;
   }
   
   /* Workout card styles */
@@ -168,7 +166,6 @@
     box-shadow: 0 8px 12px rgba(0, 51, 102, 0.15);
   }
   
-  /* Plus button (floating) */
   .add-button {
     position: fixed;
     bottom: 80px;

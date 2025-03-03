@@ -67,10 +67,6 @@ function HomeScreen() {
   );
 }
 
-
-// function StatsHistoryScreen() { ... } has been removed because it is already declared
-
-// Main App component with bottom navigation
 function App() {
   return (
     <Router>

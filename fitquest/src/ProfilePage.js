@@ -1,6 +1,6 @@
 import React from 'react';
-import './ProfilePage.css'; // Ensure styles are scoped to this page
-import bubble from './assets/bubble.jpg'; // Profile picture of Bubble
+import './ProfilePage.css'; 
+import bubble from './assets/bubble.jpg';
 
 function ProfileScreen() {
   const userProfile = {
@@ -26,7 +26,6 @@ function ProfileScreen() {
         </div>
       </div>
 
-      {/* Background Information (Now Includes Rank, Level, and XP) */}
       <div className="profile-container">
         <h2>About You</h2>
         <div className="profile-info">
