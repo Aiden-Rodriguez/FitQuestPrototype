@@ -47,21 +47,25 @@ function WorkoutsScreen() {
     setCurrentWorkout((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Add or update the workout on form submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (currentWorkout.id === null) {
+// Add or update the workout on form submit
+const handleSubmit = (e) => {
+  e.preventDefault();
+  let updatedWorkouts;
+  if (currentWorkout.id === null) {
       // Add new workout with a unique id
       const newWorkout = { ...currentWorkout, id: Date.now() };
-      setWorkouts((prev) => [...prev, newWorkout]);
-    } else {
+      updatedWorkouts = [...workouts, newWorkout];
+      setWorkouts(updatedWorkouts);
+  } else {
       // Update existing workout
-      setWorkouts((prev) =>
-        prev.map((w) => (w.id === currentWorkout.id ? currentWorkout : w))
+      updatedWorkouts = workouts.map((w) =>
+          w.id === currentWorkout.id ? currentWorkout : w
       );
-    }
-    setShowModal(false);
-  };
+      setWorkouts(updatedWorkouts);
+  }
+  localStorage.setItem('workouts', JSON.stringify(updatedWorkouts)); // Save to localStorage
+  setShowModal(false);
+};
 
   // Delete workout functionality from modal
   const handleDelete = () => {

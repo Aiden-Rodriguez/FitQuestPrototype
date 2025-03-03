@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './StatsHistory.css';
 
 function StatsHistoryScreen() {
   const [activeTab, setActiveTab] = useState('stats');
+  const [workouts, setWorkouts] = useState([]);
+
+  // Load workouts from localStorage
+  useEffect(() => {
+    const savedWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
+    setWorkouts(savedWorkouts);
+  }, []);
 
   return (
     <div className="stats-history-wrapper">
@@ -38,10 +45,15 @@ function StatsHistoryScreen() {
       {activeTab === 'history' && (
         <div className="history-section">
           <h3>Workout History</h3>
-          <ul>
-            <li><strong>Push Monday:</strong> Shoulder Press</li>
-            <li><strong>Push Monday:</strong> Lateral Raise</li>
-          </ul>
+          {workouts.length === 0 ? (
+            <p>No workouts added yet.</p>
+          ) : (
+            <ul>
+              {workouts.map((workout, index) => (
+                <li key={index}><strong>{workout.name}:</strong> {workout.sets} sets of {workout.reps} reps {workout.weight && `at ${workout.weight} lbs`}</li>
+              ))}
+            </ul>
+          )}
         </div>
       )}
 
