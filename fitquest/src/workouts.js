@@ -5,6 +5,9 @@ import bubble from './assets/bubble.jpg';
 function WorkoutsScreen() {
   const [workouts, setWorkouts] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showGainedExp, setShowGainedExp] = useState(false);
+  const [progress, setprogress] = useState('10');
+  const [expGain, setExpGain] = useState(1);
   const [currentWorkout, setCurrentWorkout] = useState({
     id: null,
     name: '',
@@ -17,7 +20,7 @@ function WorkoutsScreen() {
   const user = {
     username: 'Bubble',
     rank: 'Gold III',
-    progress: '10/15',
+    progress: progress + '/15',
     level: 'lvl17',
     avatar: bubble
   };
@@ -76,6 +79,28 @@ const handleSubmit = (e) => {
       setShowModal(false);
     }
   };
+
+  const handleComplete = () => {
+    if (currentWorkout.id !== null) {
+      setWorkouts((prev) =>
+        prev.filter((workout) => workout.id !== currentWorkout.id)
+      );
+  
+      let gainedExp = 1;
+      if (currentWorkout.difficulty === 'Medium') {
+        gainedExp = 2;
+      } else if (currentWorkout.difficulty === 'Hard') {
+        gainedExp = 3;
+      }
+  
+      setExpGain(gainedExp); 
+      setprogress((prev) => String(parseInt(prev) + gainedExp)); 
+  
+      setShowModal(false);
+      setShowGainedExp(true);
+    }
+  };
+  
 
   // Delete workout directly from card
   const handleDeleteFromCard = (id) => {
@@ -207,6 +232,11 @@ const handleSubmit = (e) => {
               </button>
             </form>
             {currentWorkout.id !== null && (
+              <button className="complete-workout-button" onClick={handleComplete}>
+                Complete Workout
+              </button>
+            )}
+            {currentWorkout.id !== null && (
               <button className="delete-button" onClick={handleDelete}>
                 Delete Workout
               </button>
@@ -217,6 +247,16 @@ const handleSubmit = (e) => {
           </div>
         </div>
       )}
+    {showGainedExp && (
+      <div className="modal-overlay" onClick={() => setShowGainedExp(!showGainedExp)}>
+        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          Good Job! Gained +{expGain} EXP
+        <button className="close-button" onClick={() => setShowGainedExp(!showGainedExp)}>
+          Close
+        </button>
+      </div>
+    </div>
+    )}
     </div>
   );
 }
