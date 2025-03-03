@@ -84,8 +84,8 @@ export default function FriendsScreen() {
       </div>
 
       <div className="add-friends-bar">
-        <div className="top-left" style={{ marginLeft: '40px' }}>
-          <button className="regular-button" onClick={() => toggleOpenAddFriend()}>
+        <div className="top-left" style={{ marginLeft: '20px' }}>
+          <button className="regular-button" style={{width:"100px"}} onClick={() => toggleOpenAddFriend()}>
             Add New
           </button>
         </div>
@@ -94,7 +94,7 @@ export default function FriendsScreen() {
             Requests
           </button>
         </div>
-        <div className="top-right" style={{ marginRight: '40px' }}>
+        <div className="top-right" style={{ marginRight: '20px' }}>
           <button className="regular-button" onClick={() => toggleOpenPending()}>
             Pending
           </button>

@@ -1,0 +1,327 @@
+/* Top Bar Container */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #f0f9ff, #e6f7ff);
+    padding: 15px 25px;
+    border-bottom: 1px solid #d0e7f5;
+    box-shadow: 0 2px 4px rgba(0, 51, 102, 0.1);
+  }
+  
+  /* Left section with profile picture */
+  .top-left {
+    flex: 0 0 auto;
+  }
+  
+  .profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+    object-fit: cover;
+  }
+  
+  /* Center section with user details */
+  .top-middle {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .user-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #003366;
+  }
+  
+  .user-rank,
+  .user-progress {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* Right section with user level */
+  .top-right {
+    flex: 0 0 auto;
+  }
+  
+  .user-level {
+    font-size: 16px;
+    font-weight: 600;
+    color: #007bff;
+  }
+/* -----------------------------------------   */
+.workout-card {
+    position: relative;
+  }
+  
+  /* Delete icon on the workout card (trash icon) */
+  .delete-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    transition: transform 0.3s ease;
+  }
+  
+  .delete-icon svg {
+    fill: #e74c3c;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .delete-icon:hover {
+    transform: scale(1.2);
+    fill: #c0392b;
+  }
+  
+  /* Modal delete button styling */
+  .delete-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-button:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Existing styles remain below... */
+  
+  /* Global container */
+  .workouts-container {
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e0f0ff, #f9fbff);
+    min-height: 100vh;
+  }
+  
+  /* Headings */
+  h1 {
+    color: #003366;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Workouts list grid */
+  .workouts-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 100px; /* Space for the floating button */
+  }
+  
+  /* Workout card styles */
+  .workout-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 51, 102, 0.1);
+    padding: 20px;
+    flex: 1 1 calc(50% - 15px);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .workout-card h2 {
+    color: #00509e;
+    margin-bottom: 8px;
+  }
+  
+  .workout-card p {
+    color: #333;
+  }
+  
+  .workout-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 51, 102, 0.15);
+  }
+  
+  /* Plus button (floating) */
+  .add-button {
+    position: fixed;
+    bottom: 80px;
+    right: 25px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 10px rgba(0, 123, 255, 0.3);
+    transition: transform 0.3s ease;
+    animation: pulse 2s infinite;
+  }
+  
+  .add-button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Plus icon style */
+  .plus-icon {
+    margin-top: -2px;
+  }
+  
+  /* Modal overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 51, 102, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+    animation: fadeInOverlay 0.4s ease-out forwards;
+  }
+  
+  /* Modal content styling */
+  .modal-content {
+    background: #fff;
+    margin: 2vh;
+    font-weight: 700;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 8px 16px rgba(0, 51, 102, 0.3);
+    animation: popIn 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeInOverlay {
+    0% {
+      opacity: 0;
+      backdrop-filter: blur(0px);
+    }
+    100% {
+      opacity: 1;
+      backdrop-filter: blur(6px);
+    }
+  }
+  
+  @keyframes popIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .modal-content h2 {
+    color: #00509e;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Form labels and inputs */
+  .modal-content form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .modal-content form input,
+  .modal-content form select,
+  .modal-content form textarea {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    border: 1px solid #cce0ff;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+  }
+  
+  .modal-content form input:focus,
+  .modal-content form select:focus,
+  .modal-content form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Confirm and close buttons */
+  .confirm-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .confirm-button:hover {
+    background-color: #218838;
+  }
+  
+  .close-button {
+    background: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .close-button:hover {
+    color: #00509e;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 600px) {
+    .workout-card {
+      flex: 1 1 100%;
+    }
+  }
+  
