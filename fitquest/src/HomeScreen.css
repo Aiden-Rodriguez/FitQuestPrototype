@@ -81,7 +81,7 @@
 .level-circle::after {
   content: "";
   position: absolute;
-  width: 100vw; /* Make the rectangle span the entire screen width */
+  width: 100vw;
   height: 8vmin;
   background: linear-gradient(135deg, #e7db04, #daf31cbe); 
   top: 50%;

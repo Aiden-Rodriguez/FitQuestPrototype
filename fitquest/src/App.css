@@ -57,7 +57,7 @@
 }
 
 .tab-item.active {
-  color: #007aff; /* Active tab color */
+  color: #007aff;
 }
 
 .tab-item span {
