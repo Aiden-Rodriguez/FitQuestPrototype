@@ -23,6 +23,7 @@ const initialFriends = [
 
 export default function FriendsScreen() {
   const navigate = useNavigate();
+  const [isOpenSuccessfulFriendAdd, setIsOpenSuccessfulFriendAdd] = useState(false);
   const [selectedFriend, setSelectedFriend] = useState(null);
   const [isOpenAddFriend, setIsOpenAddFriend] = useState(false);
   const [isOpenViewRequests, setIsOpenViewRequests] = useState(false);
@@ -30,6 +31,8 @@ export default function FriendsScreen() {
   const [searchTerm, setSearchTerm] = useState('');
   const [friends, setFriends] = useState(initialFriends);
   const [availableUsers, setAvailableUsers] = useState(users);
+  const [lastAddedFriend, setLastAddedFriend] = useState(null);
+
 
   const handleFriendClick = (friend) => {
     const isFriend = friends.some((f) => f.id === friend.id);
@@ -58,8 +61,12 @@ export default function FriendsScreen() {
   const handleAddFriend = (userToAdd) => {
     setFriends([...friends, userToAdd]);
     setAvailableUsers(availableUsers.filter((u) => u.id !== userToAdd.id));
-    setSelectedFriend(null);
+    setLastAddedFriend(userToAdd);
+    setSelectedFriend(null)
+    setIsOpenAddFriend(!isOpenAddFriend);
+    setIsOpenSuccessfulFriendAdd(!isOpenSuccessfulFriendAdd);
   };
+  
 
   const filteredUsers = availableUsers.filter((user) =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -187,6 +194,17 @@ export default function FriendsScreen() {
           </div>
         </div>
       )}
+
+      {isOpenSuccessfulFriendAdd && (
+        <div className="modal-overlay" onClick={() => setIsOpenSuccessfulFriendAdd(!isOpenSuccessfulFriendAdd)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            Added {lastAddedFriend?.name} successfully!
+          <button className="close-button" onClick={() => setIsOpenSuccessfulFriendAdd(!isOpenSuccessfulFriendAdd)}>
+            Close
+          </button>
+        </div>
+      </div>
+    )}
     </div>
   );
 }

@@ -15,7 +15,8 @@ function WorkoutsScreen() {
     split: '',
     details: '',
     difficulty: '',
-    customSplit: ''
+    customSplit: '',
+    timesCompleted: 0  
   });
 
   const user = {
@@ -34,12 +35,12 @@ function WorkoutsScreen() {
       split: '', 
       details: '', 
       difficulty: '', 
-      customSplit: '' 
+      customSplit: '',
+      timesCompleted: 0
     });
     setShowModal(true);
   };
 
-  // When a workout card is clicked, open the modal for editing
   const handleCardClick = (workout) => {
     setCurrentWorkout(workout);
     setShowModal(true);
@@ -51,25 +52,25 @@ function WorkoutsScreen() {
     setCurrentWorkout((prev) => ({ ...prev, [name]: value }));
   };
 
-// Add or update the workout on form submit
-const handleSubmit = (e) => {
-  e.preventDefault();
-  let updatedWorkouts;
-  if (currentWorkout.id === null) {
+  // Add or update the workout on form submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let updatedWorkouts;
+    if (currentWorkout.id === null) {
       // Add new workout with a unique id
       const newWorkout = { ...currentWorkout, id: Date.now() };
       updatedWorkouts = [...workouts, newWorkout];
       setWorkouts(updatedWorkouts);
-  } else {
+    } else {
       // Update existing workout
       updatedWorkouts = workouts.map((w) =>
-          w.id === currentWorkout.id ? currentWorkout : w
+        w.id === currentWorkout.id ? currentWorkout : w
       );
       setWorkouts(updatedWorkouts);
-  }
-  localStorage.setItem('workouts', JSON.stringify(updatedWorkouts)); // Save to localStorage
-  setShowModal(false);
-};
+    }
+    localStorage.setItem('workouts', JSON.stringify(updatedWorkouts)); // Save to localStorage
+    setShowModal(false);
+  };
 
   // Delete workout functionality from modal
   const handleDelete = () => {
@@ -83,32 +84,34 @@ const handleSubmit = (e) => {
 
   const handleComplete = () => {
     if (currentWorkout.id !== null) {
-      setWorkouts((prev) =>
-        prev.filter((workout) => workout.id !== currentWorkout.id)
-      );
-  
       let gainedExp = 1;
       if (currentWorkout.difficulty === 'Medium') {
         gainedExp = 2;
       } else if (currentWorkout.difficulty === 'Hard') {
         gainedExp = 3;
       }
-  
-      setExpGain(gainedExp); 
-      setprogress((prev) => String(parseInt(prev) + gainedExp)); 
-  
+
+      const updatedWorkouts = workouts.map((workout) =>
+        workout.id === currentWorkout.id
+          ? { ...workout, timesCompleted: workout.timesCompleted + 1 }
+          : workout
+      );
+      setWorkouts(updatedWorkouts);
+
+      setExpGain(gainedExp);
+      setprogress((prev) => String(parseInt(prev) + gainedExp));
+
       setShowModal(false);
       setShowGainedExp(true);
     }
   };
-  
 
   // Delete workout directly from card
   const handleDeleteFromCard = (id) => {
     setWorkouts((prev) => prev.filter((workout) => workout.id !== id));
   };
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div className="workouts-container">
       <div className="top-bar">
@@ -157,6 +160,9 @@ const handleSubmit = (e) => {
             )}
             <p className="workout-difficulty">Difficulty: {workout.difficulty}</p>
             <p>{workout.details}</p>
+            <p className="workout-times-completed">
+              Completed: {workout.timesCompleted} {workout.timesCompleted === 1 ? 'time' : 'times'}
+            </p>
           </div>
         ))}
       </div>
@@ -249,16 +255,16 @@ const handleSubmit = (e) => {
           </div>
         </div>
       )}
-    {showGainedExp && (
-      <div className="modal-overlay" onClick={() => setShowGainedExp(!showGainedExp)}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          Good Job! Gained +{expGain} EXP
-        <button className="close-button" onClick={() => setShowGainedExp(!showGainedExp)}>
-          Close
-        </button>
-      </div>
-    </div>
-    )}
+      {showGainedExp && (
+        <div className="modal-overlay" onClick={() => setShowGainedExp(!showGainedExp)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            Good Job! Gained +{expGain} EXP
+            <button className="close-button" onClick={() => setShowGainedExp(!showGainedExp)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
