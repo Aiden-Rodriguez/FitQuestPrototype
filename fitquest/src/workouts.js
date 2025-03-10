@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './workoutsScreen.css';
 import bubble from './assets/bubble.jpg';
 import { useNavigate } from 'react-router-dom';
@@ -43,6 +43,17 @@ function WorkoutsScreen() {
     setShowModal(true);
   };
 
+   useEffect(() => {
+    const savedWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
+    setWorkouts(savedWorkouts);
+  }, []);
+
+  useEffect(() => {
+    if (workouts.length > 0) {
+      localStorage.setItem('workouts', JSON.stringify(workouts));
+    }
+  }, [workouts]);
+
   const handleCardClick = (workout) => {
     setCurrentWorkout(workout);
     setShowModal(true);
@@ -68,9 +79,8 @@ function WorkoutsScreen() {
       updatedWorkouts = workouts.map((w) =>
         w.id === currentWorkout.id ? currentWorkout : w
       );
-      setWorkouts(updatedWorkouts);
     }
-    localStorage.setItem('workouts', JSON.stringify(updatedWorkouts)); // Save to localStorage
+    setWorkouts(updatedWorkouts);
     setShowModal(false);
   };
 

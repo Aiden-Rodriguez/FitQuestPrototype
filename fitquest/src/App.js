@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink, useNavigate } from 'react-router-dom';
 import { IoHome, IoHomeOutline, IoBarbell, IoBarbellOutline, IoPerson, IoPersonOutline, IoPeople, IoPeopleOutline } from 'react-icons/io5';
 import './App.css';
@@ -12,6 +12,7 @@ import bellIcon from "./assets/bellicon.png";
 // Individual screen components
 function HomeScreen() {
   const navigate = useNavigate();
+  const [workouts, setWorkouts] = useState([]);
 
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
@@ -24,6 +25,11 @@ function HomeScreen() {
       setIsOverlayOpen(false);
     }
   };
+
+  useEffect(() => {
+    const savedWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
+    setWorkouts(savedWorkouts);
+  }, []);
 
   return (
     <div className="home-container">
@@ -60,8 +66,12 @@ function HomeScreen() {
       {/* Ongoing Quest Section */}
       <div className="quest-section">
         <h3>Ongoing Quests:</h3>
-        <div className="quest-box">15 Crunches</div>
-        <div className="quest-box">29 Pull-Ups</div>
+        {workouts.length > 0 ? (
+          workouts.map((workout, index) =>
+          <div key={index} className="questText">{workout.name}</div>)
+        ) : (
+          <p>No Ongoing Workouts!</p>
+        )}
       </div>
     </div>
   );
