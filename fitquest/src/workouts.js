@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 function WorkoutsScreen() {
   const [workouts, setWorkouts] = useState([]);
+  const [deletedWorkouts, setDeletedWorkouts] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showUndoModal, setShowUndoModal] = useState(false);
   const [showGainedExp, setShowGainedExp] = useState(false);
   const [progress, setprogress] = useState('10');
   const [expGain, setExpGain] = useState(1);
@@ -75,11 +77,25 @@ function WorkoutsScreen() {
   // Delete workout functionality from modal
   const handleDelete = () => {
     if (currentWorkout.id !== null) {
-      setWorkouts((prev) =>
-        prev.filter((workout) => workout.id !== currentWorkout.id)
-      );
+      setDeletedWorkouts((prev) => [currentWorkout, ...prev]);
+      setWorkouts((prev) => prev.filter((workout) => workout.id !== currentWorkout.id));
       setShowModal(false);
     }
+  };
+
+  // Show undo modal regardless of whether there are deleted workouts
+  const openUndoModal = () => {
+    setShowUndoModal(true);
+  };
+
+  // Perform the actual undo action when confirmed in the modal
+  const handleUndo = () => {
+    if (deletedWorkouts.length > 0) {
+      const lastDeleted = deletedWorkouts[0];
+      setWorkouts((prev) => [lastDeleted, ...prev]);
+      setDeletedWorkouts((prev) => prev.slice(1));
+    }
+    setShowUndoModal(false);
   };
 
   const handleComplete = () => {
@@ -108,9 +124,13 @@ function WorkoutsScreen() {
 
   // Delete workout directly from card
   const handleDeleteFromCard = (id) => {
-    setWorkouts((prev) => prev.filter((workout) => workout.id !== id));
+    const workoutToDelete = workouts.find((workout) => workout.id === id);
+    if (workoutToDelete) {
+      setDeletedWorkouts((prev) => [workoutToDelete, ...prev]);
+      setWorkouts((prev) => prev.filter((workout) => workout.id !== id));
+    }
   };
-
+  
   const navigate = useNavigate();
   return (
     <div className="workouts-container">
@@ -169,7 +189,9 @@ function WorkoutsScreen() {
       <button className="add-button" onClick={openNewWorkoutModal}>
         <span className="plus-icon">+</span>
       </button>
-
+      <button className="undo-button" onClick={openUndoModal}>
+        <span className="plus-icon">↩</span>
+      </button>
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -258,8 +280,28 @@ function WorkoutsScreen() {
       {showGainedExp && (
         <div className="modal-overlay" onClick={() => setShowGainedExp(!showGainedExp)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            Good Job! Gained +{expGain} EXP
+            Gained {expGain} exp!
             <button className="close-button" onClick={() => setShowGainedExp(!showGainedExp)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showUndoModal && (
+        <div className="modal-overlay" onClick={() => setShowUndoModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            {deletedWorkouts.length > 0 ? (
+              <>
+                <p>Undo last deleted workout?</p>
+                <button className="confirm-button" onClick={handleUndo}>
+                  Undo
+                </button>
+              </>
+            ) : (
+              <p>No deleted workouts to restore.</p>
+            )}
+            <button className="close-button" onClick={() => setShowUndoModal(false)}>
               Close
             </button>
           </div>

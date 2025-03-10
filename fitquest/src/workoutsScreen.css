@@ -185,6 +185,26 @@
     transition: transform 0.3s ease;
     animation: pulse 2s infinite;
   }
+
+  .undo-button {
+    position: fixed;
+    left: 25px;
+    bottom: 80px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #c4336b;
+    color: #fff;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 10px rgba(0, 123, 255, 0.3);
+    transition: transform 0.3s ease;
+    animation: pulse 2s infinite;
+  }
   
   .add-button:hover {
     transform: scale(1.1);

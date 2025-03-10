@@ -24,6 +24,7 @@ const initialFriends = [
 export default function FriendsScreen() {
   const navigate = useNavigate();
   const [isOpenSuccessfulFriendAdd, setIsOpenSuccessfulFriendAdd] = useState(false);
+  const [isOpenSuccessfulFriendRemove, setIsOpenSuccessfulFriendRemove] = useState(false);
   const [selectedFriend, setSelectedFriend] = useState(null);
   const [isOpenAddFriend, setIsOpenAddFriend] = useState(false);
   const [isOpenViewRequests, setIsOpenViewRequests] = useState(false);
@@ -32,6 +33,7 @@ export default function FriendsScreen() {
   const [friends, setFriends] = useState(initialFriends);
   const [availableUsers, setAvailableUsers] = useState(users);
   const [lastAddedFriend, setLastAddedFriend] = useState(null);
+  const [lastRemovedFriend, setLastRemovedFriend] = useState(null);
 
 
   const handleFriendClick = (friend) => {
@@ -67,6 +69,13 @@ export default function FriendsScreen() {
     setIsOpenSuccessfulFriendAdd(!isOpenSuccessfulFriendAdd);
   };
   
+  const handleRemoveFriend = (userToRemove) => {
+    setFriends(friends.filter((u) => u.id !== userToRemove.id));
+    setAvailableUsers([...availableUsers, userToRemove]); 
+    setLastRemovedFriend(userToRemove);
+    setSelectedFriend(null);
+    setIsOpenSuccessfulFriendRemove(!isOpenSuccessfulFriendRemove);
+  };
 
   const filteredUsers = availableUsers.filter((user) =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -136,6 +145,9 @@ export default function FriendsScreen() {
                 <button className="regular-button" onClick={handleCloseOverlayViewFriend}>
                     Close
                 </button>
+                <button className="regular-button" onClick={ () => handleRemoveFriend(selectedFriend)}>
+                    Remove Friend
+                </button>
             </div>
           </div>
         </div>
@@ -200,6 +212,17 @@ export default function FriendsScreen() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             Added {lastAddedFriend?.name} successfully!
           <button className="close-button" onClick={() => setIsOpenSuccessfulFriendAdd(!isOpenSuccessfulFriendAdd)}>
+            Close
+          </button>
+        </div>
+      </div>
+    )}
+
+    {isOpenSuccessfulFriendRemove && (
+        <div className="modal-overlay" onClick={() => setIsOpenSuccessfulFriendRemove(!isOpenSuccessfulFriendRemove)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            Removed {lastRemovedFriend?.name} successfully!
+          <button className="close-button" onClick={() => setIsOpenSuccessfulFriendRemove(!isOpenSuccessfulFriendRemove)}>
             Close
           </button>
         </div>
