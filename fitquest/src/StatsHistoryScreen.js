@@ -50,18 +50,12 @@ function StatsHistoryScreen() {
       {activeTab === 'history' && (
         <div className="history-section">
           <h3>Workout History</h3>
-          {workouts.length === 0 ? (
-            <p>No workouts added yet.</p>
-          ) : (
-            <p> 
-              <p>
-              20 Crunches 02/28/25
-              </p>
-              <p>
-              30 Pull-Ups 03/01/25
-              </p>
-            </p>
-          )}
+          {workouts.length > 0 ? (
+          workouts.map((workout, index) =>
+          <div key={index} className="questText">{workout.name}</div>)
+        ) : (
+          <p>No Ongoing Workouts!</p>
+        )}
         </div>
       )}
 
