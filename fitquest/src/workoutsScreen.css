@@ -188,23 +188,44 @@
 
   .undo-button {
     position: fixed;
-    left: 25px;
     bottom: 80px;
-    width: 65px;
-    height: 65px;
+    left: 25px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    background-color: #c4336b;
+    background: linear-gradient(145deg, #e74c3c, #c0392b);
     color: #fff;
-    font-size: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     cursor: pointer;
-    box-shadow: 0 6px 10px rgba(0, 123, 255, 0.3);
-    transition: transform 0.3s ease;
-    animation: pulse 2s infinite;
+    box-shadow: 0 8px 16px rgba(231, 76, 60, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+  
+  .undo-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(231, 76, 60, 0.5);
+  }
+  
+  .undo-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .undo-icon {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  
+  .undo-text {
+    font-size: 14px;
+    margin-top: 4px;
+    font-weight: 600;
+  }  
   
   .add-button:hover {
     transform: scale(1.1);

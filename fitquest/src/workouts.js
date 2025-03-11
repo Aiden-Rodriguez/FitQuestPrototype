@@ -200,7 +200,10 @@ function WorkoutsScreen() {
         <span className="plus-icon">+</span>
       </button>
       <button className="undo-button" onClick={openUndoModal}>
-        <span className="plus-icon">↩</span>
+        <div className="undo-content">
+          <span className="undo-icon">⟲</span>
+          <span className="undo-text">Undo</span>
+        </div>
       </button>
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
