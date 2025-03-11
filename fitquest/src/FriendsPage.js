@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FriendsPage.css';
 import croc from './assets/croc.png';
 import horse from './assets/horse.png';
@@ -30,7 +30,6 @@ export default function FriendsScreen() {
   const [isOpenViewRequests, setIsOpenViewRequests] = useState(false);
   const [isOpenViewPending, setIsOpenViewPending] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [friends, setFriends] = useState(initialFriends);
   const [availableUsers, setAvailableUsers] = useState(users);
   const [lastAddedFriend, setLastAddedFriend] = useState(null);
   const [lastRemovedFriend, setLastRemovedFriend] = useState(null);
@@ -44,6 +43,17 @@ export default function FriendsScreen() {
       setSelectedFriend({ ...friend, isFriend: false }); // Potential friend
     }
   };
+
+  const [friends, setFriends] = useState(() => {
+    const savedFriends = JSON.parse(localStorage.getItem('friends'));
+    return savedFriends || [];
+  });
+
+  useEffect(() => {
+    if (friends.length > 0) {
+      localStorage.setItem('friends', JSON.stringify(friends));
+    }
+  }, [friends]);
 
   const toggleOpenAddFriend = () => {
     setIsOpenAddFriend(!isOpenAddFriend);
@@ -61,16 +71,18 @@ export default function FriendsScreen() {
   };
 
   const handleAddFriend = (userToAdd) => {
-    setFriends([...friends, userToAdd]);
+    const updatedFriends = [...friends, userToAdd];
+    setFriends(updatedFriends);
     setAvailableUsers(availableUsers.filter((u) => u.id !== userToAdd.id));
     setLastAddedFriend(userToAdd);
-    setSelectedFriend(null)
+    setSelectedFriend(null);
     setIsOpenAddFriend(!isOpenAddFriend);
     setIsOpenSuccessfulFriendAdd(!isOpenSuccessfulFriendAdd);
   };
   
   const handleRemoveFriend = (userToRemove) => {
-    setFriends(friends.filter((u) => u.id !== userToRemove.id));
+    const updatedFriends = friends.filter((u) => u.id !== userToRemove.id);
+    setFriends(updatedFriends);
     setAvailableUsers([...availableUsers, userToRemove]); 
     setLastRemovedFriend(userToRemove);
     setSelectedFriend(null);
